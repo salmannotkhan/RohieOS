@@ -1,0 +1,189 @@
+@import url('https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,200;0,300;0,400;0,600;0,700;1,200;1,300;1,400;1,600;1,700&display=swap');
+
+$dark-shadow: darkslategray;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: 0.5s ease;
+    font-family: 'Overpass', sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    position: relative;
+    --shadow-color: lightgray;
+    --bg-color: whitesmoke;
+    --font-color: black;
+}
+
+body::before {
+    content: "";
+    background-image: url('./cnuisin190100276.jpg');
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: -1;
+    filter: opacity(0.5);
+}
+
+body.dark {
+    --shadow-color: darkslategray;
+    --font-color: white;
+    --bg-color: black;
+    &::before {
+        filter: invert(0.9) contrast(120%);
+    }
+    nav {
+        background-color: black;
+        & > img {
+            filter: invert(1);
+        }
+        .button {
+            img {
+                filter: invert(1);
+            }
+        }
+        a {
+            color: white;
+        }
+    }
+    section {
+        color: white;
+    }
+    footer {
+        background-color: black;
+        color: white;
+    }
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--bg-color);
+    box-shadow: 1px 1px 10px var(--shadow-color);
+    position: sticky;
+    top: 0;
+    padding: 10px;
+    color: var(--font-color);
+    .button {
+        display: none;
+        cursor: pointer;
+    }
+    .logo {
+        display: flex;
+        flex-grow: 1;
+        align-items: center;
+        img {
+            height: 50px;
+            width: 50px;
+            border-radius: 5px;
+        }
+        a {
+            vertical-align: middle;
+            padding-left: 10px;
+        }
+    }
+    & > img {
+        height: 25px;
+        width: 25px;
+        margin-right: 20px;
+        transform: translateY(-3%);
+    }
+    .nav-links {
+        display: flex;
+        align-items: center;
+        a {
+            padding: 15px;
+            border: 1px solid transparent;
+            border-radius: 5px;
+            &:hover {
+                border-color: var(--shadow-color);
+                box-shadow: 1px 1px 5px var(--shadow-color);
+
+            }
+        }
+    }
+}
+
+section {
+    margin: 0px 10%;
+    margin-top: 40px;
+    background-color: transparent;
+    color: var(--font-color);
+    .heading {
+        text-align: center;
+    }
+    & > * {
+        box-shadow: -1px 1px 10px var(--shadow-color);
+        background-color: var(--bg-color);
+        margin-bottom: 50px;
+        padding: 50px;
+    }
+}
+
+footer {
+    text-align: center;
+    box-shadow: 0px -5px 10px var(--shadow-color);
+    padding: 10px;
+    background-color: var(--bg-color);
+    color: var(--font-color);
+}
+
+@media(max-width:768px){
+    nav {
+        & > img {
+            margin-right: 5px;
+        }
+        .button {
+            display: flex;
+            align-items: center;
+            border: none;
+            background-color: var(--bg-color);
+            color: var(--font-color);
+            padding: 10px;
+            img {
+                height: 25px;
+                width: 25px;
+                margin: 5px;
+            }
+        }
+        .logo {
+            img {
+                height: 35px;
+                width: 35px;
+            }
+        }
+        .nav-links {
+            background-color: var(--bg-color);
+            position: fixed;
+            flex-direction: column;
+            align-items: flex-start;
+            top: 10px;
+            width: 50%;
+            right: -100%;
+            bottom: 0;
+            transition-duration: 1s;
+            a {
+                padding: 10px 25px;
+            }
+            .button {
+                align-self: flex-end
+            }
+            &.activated {
+                right: 0;
+            }
+        }
+    }
+}
